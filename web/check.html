@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hair &amp; Scalp Care Advisor</title>
+<meta name="description" content="Educational photo check for hair and scalp: plain-language answers with a clear note on how far to trust them.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/ibm-plex-sans-thai-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="check">
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+<div class="proto-bar" role="region" data-i18n-aria="disclaimer_pill" data-i18n="disclaimer_pill">Educational demo · not medical advice</div>
+<header class="header">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="46" height="46"><span><b data-i18n="app_title">Hair &amp; Scalp Care Advisor</b><small data-i18n="p_tagline_short">AI Hair Analysis</small></span></a>
+    <nav class="nav" aria-label="Pages"><a href="index.html" data-i18n="p_n_home">p_n_home</a><a href="check.html" aria-current="page" data-i18n="nav_check">nav_check</a><a href="details.html" data-i18n="nav_performance">nav_performance</a><a href="monitoring.html" data-i18n="nav_monitoring">nav_monitoring</a></nav>
+    <div class="header-tools">
+      <div class="seg lang" role="group" aria-label="Language / ภาษา">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="th" aria-pressed="false">ไทย</button>
+      </div>
+      <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mnav" data-i18n-aria="p_menu" data-icon="menu"></button>
+    </div>
+  </div>
+</header>
+<div class="mnav" id="mnav"><a href="index.html"><span data-i18n="p_n_home">p_n_home</span><span class="ico-i " data-icon="right"></span></a><a href="check.html" aria-current="page"><span data-i18n="nav_check">nav_check</span><span class="ico-i " data-icon="right"></span></a><a href="details.html"><span data-i18n="nav_performance">nav_performance</span><span class="ico-i " data-icon="right"></span></a><a href="monitoring.html"><span data-i18n="nav_monitoring">nav_monitoring</span><span class="ico-i " data-icon="right"></span></a></div>
+<noscript><p class="nojs">This page needs JavaScript to work. / หน้านี้ต้องเปิดใช้ JavaScript จึงจะทำงานได้</p></noscript>
+<main id="main" tabindex="-1">
+<div class="wrap page-top">
+  <ol class="stepper" id="stepper" data-i18n-aria="p_steps_label">
+    <li class="now" aria-current="step"><span class="dot">1</span><span data-i18n="p_step1"></span></li>
+    <li><span class="dot">2</span><span data-i18n="p_step2"></span></li>
+    <li><span class="dot">3</span><span data-i18n="p_step3"></span></li>
+  </ol>
+  <section id="check" aria-labelledby="check-title">
+    <div class="up-intro">
+      <div><h1 id="check-title" data-i18n="p_u_title"></h1><p class="lead" data-i18n="p_u_lead"></p></div>
+      <ul class="facts-card card"><li><span class="ico-i " data-icon="clock"></span><span data-i18n="p_u_f1"></span></li><li><span class="ico-i " data-icon="shield"></span><span data-i18n="p_u_f2"></span></li><li><span class="ico-i " data-icon="info"></span><span data-i18n="p_u_f3"></span></li></ul>
+    </div>
+    <div id="untested" class="notice notice-amber" hidden><span class="ico-i " data-icon="alert"></span><span><span data-i18n="untested_banner"></span> <a href="details.html#limits" data-i18n="limits_link"></a></span></div>
+    <div id="server-warn" class="notice notice-bad" role="alert" hidden></div>
+    <div class="up-grid">
+      <article class="photo-card is-front" id="slot-front" data-slot="front" aria-labelledby="h-front">
+        <header class="up-head">
+          <span class="up-ico"><span class="ico-i " data-icon="face"></span></span>
+          <div class="up-titles"><h2 id="h-front" data-i18n="front_title"></h2><p data-i18n="front_why"></p></div>
+          <span class="chip chip-muted" data-status></span>
+        </header>
+        <div class="up-body">
+          <figure class="up-ex"><img src="assets/examples/front-example.svg" alt=""><figcaption data-i18n="p_u_example"></figcaption></figure>
+          <div class="up-tips"><h3 data-i18n="tips_title"></h3><ul data-i18n-list="front_do"></ul></div>
+          <div class="up-prev">
+            <div class="drop" tabindex="0" role="button" data-i18n-aria="btn_browse"><div class="prev-empty"><span class="ico-i " data-icon="camera"></span><span data-i18n="p_u_empty"></span></div><img class="preview" alt="" hidden></div>
+            <button type="button" class="x-btn" data-remove hidden data-i18n-aria="remove" data-icon="x"></button>
+            <span class="prev-tag" data-tag hidden><span class="ico-i " data-icon="check"></span><span data-i18n="p_u_notchecked"></span></span>
+          </div>
+        </div>
+        <p class="slot-msg" data-msg role="alert" hidden></p>
+        <div class="pcheck" hidden></div>
+        <details class="tips-box"><summary data-i18n="avoid"></summary><div class="tips"><ul data-i18n-list="front_dont"></ul></div></details>
+        <div class="slot-actions">
+          <label class="btn btn-outline btn-main"><input class="sr" type="file" accept="image/jpeg,image/png,image/webp" data-pick="gallery"><span class="ico-i " data-icon="upload"></span><span data-i18n="btn_browse"></span></label>
+          <label class="btn btn-outline btn-square"><input class="sr" type="file" accept="image/*" capture="user" data-pick="camera"><span class="ico-i " data-icon="camera"></span><span class="sr" data-i18n="btn_camera"></span></label>
+        </div>
+      </article>
+      <article class="photo-card is-crown up-crown" id="slot-crown" data-slot="crown" aria-labelledby="h-crown">
+        <header class="up-head">
+          <span class="up-ico"><span class="ico-i " data-icon="crown"></span></span>
+          <div class="up-titles"><h2 id="h-crown" data-i18n="crown_title"></h2><p data-i18n="crown_why"></p></div>
+          <span class="chip chip-muted" data-status></span>
+        </header>
+        <div class="up-body">
+          <figure class="up-ex"><img src="assets/examples/crown-example.svg" alt=""><figcaption data-i18n="p_u_example"></figcaption></figure>
+          <div class="up-tips"><h3 data-i18n="tips_title"></h3><ul data-i18n-list="crown_do"></ul></div>
+          <div class="up-prev">
+            <div class="drop" tabindex="0" role="button" data-i18n-aria="btn_browse"><div class="prev-empty"><span class="ico-i " data-icon="camera"></span><span data-i18n="p_u_empty"></span></div><img class="preview" alt="" hidden></div>
+            <button type="button" class="x-btn" data-remove hidden data-i18n-aria="remove" data-icon="x"></button>
+            <span class="prev-tag" data-tag hidden><span class="ico-i " data-icon="check"></span><span data-i18n="p_u_notchecked"></span></span>
+          </div>
+        </div>
+        <p class="slot-msg" data-msg role="alert" hidden></p>
+        <div class="pcheck" hidden></div>
+        <details class="tips-box"><summary data-i18n="avoid"></summary><div class="tips"><ul data-i18n-list="crown_dont"></ul></div></details>
+        <div class="slot-actions">
+          <label class="btn btn-outline btn-blue btn-main"><input class="sr" type="file" accept="image/jpeg,image/png,image/webp" data-pick="gallery"><span class="ico-i " data-icon="upload"></span><span data-i18n="btn_browse"></span></label>
+          <label class="btn btn-outline btn-blue btn-square"><input class="sr" type="file" accept="image/*" capture="environment" data-pick="camera"><span class="ico-i " data-icon="camera"></span><span class="sr" data-i18n="btn_camera"></span></label>
+        </div>
+      </article>
+    </div>
+    <section class="card better" aria-labelledby="bt">
+      <span class="better-ico"><span class="ico-i " data-icon="bulb"></span></span>
+      <div class="better-t"><h2 id="bt" data-i18n="p_u_better"></h2><p data-i18n="p_u_better_p"></p></div>
+      <ul class="better-pics">
+        <li class="ok"><span class="bp"><img src="assets/examples/front-good.svg" alt=""><i class="mark"><span class="ico-i " data-icon="check"></span></i></span><span class="cap" data-i18n="p_bt_clear"></span></li>
+        <li class="ok"><span class="bp"><img src="assets/examples/crown-good.svg" alt=""><i class="mark"><span class="ico-i " data-icon="check"></span></i></span><span class="cap" data-i18n="p_bt_close"></span></li>
+        <li class="no"><span class="bp"><img src="assets/examples/front-far.svg" alt=""><i class="mark"><span class="ico-i " data-icon="x"></span></i></span><span class="cap" data-i18n="p_bt_far"></span></li>
+        <li class="no"><span class="bp"><img src="assets/examples/crown-blur.svg" alt=""><i class="mark"><span class="ico-i " data-icon="x"></span></i></span><span class="cap" data-i18n="p_bt_blur"></span></li>
+      </ul>
+    </section>
+    <label class="opt"><input type="checkbox" id="opt-heat"> <span data-i18n="opt_heat"></span></label>
+    <div id="working" class="working" role="status" hidden><p class="status" data-i18n="checking"></p><div class="an-bar"><i></i></div><p class="muted" data-i18n="checking_hint"></p></div>
+    <div class="runbar">
+      <button type="button" id="run" class="btn btn-primary btn-lg" disabled><span id="run-label" data-i18n="btn_check">Check my photos</span><span class="ico-i " data-icon="arrow"></span></button>
+      <p id="run-hint" class="small muted" data-i18n="empty_hint"></p>
+    </div>
+    <p class="small-note privacy-note" data-i18n="photo_privacy"></p>
+    <div id="error" class="notice notice-bad" role="alert" hidden><span class="ico-i " data-icon="alert"></span><span><span id="error-text"></span> <button type="button" class="btn btn-quiet btn-sm" id="retry" data-i18n="btn_retry" hidden></button></span></div>
+    <details class="bad">
+      <summary data-i18n="bad_title">Photos the AI cannot judge</summary>
+      <div class="bad-row">
+        <figure><img src="assets/bad-far.svg" alt="" width="240" height="300"><figcaption data-i18n="bad_far"></figcaption></figure>
+        <figure><img src="assets/bad-hat.svg" alt="" width="240" height="300"><figcaption data-i18n="bad_hat"></figcaption></figure>
+        <figure><img src="assets/bad-blur.svg" alt="" width="240" height="300"><figcaption data-i18n="bad_blur"></figcaption></figure>
+      </div>
+    </details>
+    <section id="results" class="results" aria-live="polite" tabindex="-1" hidden></section>
+  </section>
+</div>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><p data-i18n="foot"></p><p><span id="ver"></span> · <a href="docs" data-i18n="footer_api" id="api-link">API documentation</a></p></div>
+    <nav aria-label="Footer"><a href="index.html" data-i18n="p_n_home">p_n_home</a><a href="check.html" data-i18n="nav_check">nav_check</a><a href="details.html" data-i18n="nav_performance">nav_performance</a><a href="monitoring.html" data-i18n="nav_monitoring">nav_monitoring</a></nav>
+  </div>
+</footer>
+<script src="js/app.js"></script>
+</body>
+</html>

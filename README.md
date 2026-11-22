@@ -43,7 +43,7 @@ Errors always look like `{"error": {"code": ..., "message": ...}}`: `unsupported
 ## Where things are
 - `service/` FastAPI app: `main.py` routes and upload checks, `schemas.py` Pydantic contracts, `engine.py` model loading,
   `monitor.py` request log (`logs/requests.jsonl`, no photos).
-- `web/` the website: `index.html` (check photos), `details.html` (model performance), `monitoring.html` (service statistics), `css/`, `js/app.js`,
+- `web/` the website: `index.html` (home), `check.html` (add photos, analysis, results), `details.html` (model and research), `monitoring.html` (service statistics), `css/site.css` (design tokens at the top), `js/app.js`,
   `fonts/` (self-hosted), `assets/` illustrations, `data/i18n.json` (all EN/TH text), `data/accuracy.json` (numbers shown on the page).
 - `src/` models, training, evaluation, calibration, gate, verdict rules, `pipeline.py` (one photo -> verdicts), `settings.py` (every threshold).
 - `scripts/` labels, leak audit, gate, experiments, `stamp_artifact.py`, `check_demo_photos.py`, `probe_photos.py`, `run_test_batch.py` (held-out photos through the running server).

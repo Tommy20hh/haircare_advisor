@@ -33,6 +33,43 @@
     unsuitable: '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
   };
   var PCICON = { match: ICON.none_seen, partial: ICON.unsure, mismatch: ICON.unsuitable };
+  /* Page icons: elements marked data-icon="name" get the inline SVG (no image files, no inline styles). */
+  var G = {
+    camera: '<path d="M4 8h3l1.6-2.2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/>', upload: '<path d="M12 16V5M7.5 9.5L12 5l4.5 4.5M5 19h14"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7"/>', x: '<path d="M6 6l12 12M18 6L6 18"/>', shield: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>', bulb: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+    face: '<path d="M7 10c0-3 2-5.5 5-5.5s5 2.5 5 5.5v3c0 3-2 5.5-5 5.5S7 16 7 13z"/><path d="M4.5 21c1.6-2.2 4-3.2 7.5-3.2s5.9 1 7.5 3.2"/>',
+    crown: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="1.6"/><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3"/>', right: '<path d="M9 6l6 6-6 6"/>', arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    menu: '<path d="M4 7h16M4 12h16M4 17h16"/>', leaf: '<path d="M5 19C5 10 10 5 19 5c0 9-5 14-14 14zM5 19l8-8"/>', eye: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    heart: '<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>', drop: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>', flake: '<path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/>',
+    strands: '<path d="M8 20C7 14 8 8 6 4M12 20c-1-6 0-11 2-16M17 20c-2-4-3-8-3-12"/>', layers: '<path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/>', alert: '<path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17v.01"/>'
+  };
+  function svg(n) { return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + (G[n] || "") + "</svg>"; }
+  function injectIcons(root) { $$("[data-icon]", root).forEach(function (n) { n.innerHTML = svg(n.getAttribute("data-icon")); }); }
+  function setMenu(open) {
+    var b = $("#menu-btn"), m = $("#mnav"); if (!b || !m) return;
+    m.classList.toggle("open", open); b.setAttribute("aria-expanded", open ? "true" : "false"); b.setAttribute("data-icon", open ? "x" : "menu"); injectIcons(b);
+    document.body.classList.toggle("menu-open", open);
+  }
+  /* The 3-step indicator follows the real state: photos being added, the service working, results on screen. */
+  function renderStepper() {
+    var st = $("#stepper"); if (!st) return;
+    var now = S.busy ? 2 : (S.last ? 3 : 1);
+    $$("li", st).forEach(function (li, i) {
+      var n = i + 1, dot = $(".dot", li);
+      li.className = n < now ? "done" : (n === now ? "now" : "");
+      if (n === now) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      dot.innerHTML = n < now ? svg("check") : String(n);
+    });
+  }
+  function renderSlotStatus(slot) {
+    var box = $("#slot-" + slot); if (!box) return;
+    var chip = $("[data-status]", box), has = !!S.files[slot];
+    chip.className = "chip " + (has ? (slot === "front" ? "chip-green" : "chip-blue") : "chip-muted");
+    chip.innerHTML = svg(has ? "check" : "info") + esc(t(has ? "p_u_added" : "p_u_none"));
+    var tag = $("[data-tag]", box), checked = S.last && S.last.slots.some(function (x) { return x.slot === slot; });
+    if (tag) tag.hidden = !has || !!checked;
+  }
 
   /* ---------- language ---------- */
   function applyStatic() {
@@ -44,8 +81,9 @@
       n.innerHTML = (Array.isArray(items) ? items : []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
     });
     $$(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === S.lang ? "true" : "false"); });
+    $$("[data-i18n-l]").forEach(function (n) { n.setAttribute("data-l", t(n.getAttribute("data-i18n-l"))); });
     document.title = t("app_title");
-    renderHint(); renderAccuracy(); renderStats(); renderVersion(); renderModels(); renderHealthPanel();
+    renderHint(); ["front", "crown"].forEach(renderSlotStatus); renderAccuracy(); renderStats(); renderVersion(); renderModels(); renderHealthPanel();
     if (S.last && $("#results")) renderResults(S.last);
     ["front", "crown"].forEach(function (s) { var p = $("#slot-" + s + " .pcheck"); if (p && !p.hidden && S.last) showPhotoCheck(s); });
     var e = $("#error"); if (e && !e.hidden && e.dataset.code) $("#error-text").textContent = errText(e.dataset.code);
@@ -94,6 +132,7 @@
     }
     $(".pcheck", box).hidden = true;
     slotMessage(slot, null);
+    renderSlotStatus(slot);
     renderHint();
   }
   function choose(slot, file) {
@@ -106,8 +145,10 @@
     $("#run").disabled = S.busy || n === 0;
     $("#run-label").textContent = S.busy ? t("checking") : t("btn_check");
     var hint = $("#run-hint");
-    hint.hidden = !(S.busy || n === 0);
-    hint.textContent = t(S.busy ? "checking_hint" : "empty_hint");
+    hint.hidden = !(n === 0 && !S.busy);
+    hint.textContent = t("empty_hint");
+    var wk = $("#working"); if (wk) wk.hidden = !S.busy;   // the "checking" message and its moving bar are shown only while the service is really working
+    renderStepper();
     $("#opt-heat").disabled = S.busy;
     $$("[data-remove]").forEach(function (b) { b.disabled = S.busy; });
     document.body.classList.toggle("has-photo", n > 0 || S.busy);
@@ -178,6 +219,7 @@
     box.className = "pcheck pcheck-" + st;
     box.innerHTML = PCICON[st] + "<div><b>" + esc(t("pc_title")) + "</b>" + esc(t("pc_" + st)) + (flags ? "<ul>" + flags + "</ul>" : "") + "</div>";
     box.hidden = false;
+    renderSlotStatus(slot);
   }
   function meter(rel) {
     var n = { good: 3, limited: 2, low: 1 }[rel] || 1;
@@ -301,7 +343,7 @@
     var g = summaryGroups(j), hk = headlineKey(g);
     var names = (g.possible.length ? g.possible : g[hk] || []).join(", ");
     // A. main result
-    var hero = el("div", "results-hero");
+    var hero = el("div", "results-hero v-" + hk);
     hero.innerHTML = '<div class="results-copy"><div class="eyebrow">' + esc(t("res_eyebrow")) + "</div><h1>" + esc(t("res_h_" + hk)) + "</h1><p>" + esc(t("res_s_" + hk)) +
       (names && hk === "possible" ? " " + esc(names) + "." : "") + '</p><div class="result-meta">' + esc(t("res_meta")) + '</div></div><div class="results-art">' + RES_ART + "</div>";
     root.appendChild(hero);
@@ -337,6 +379,7 @@
     setFile("front", null); setFile("crown", null); S.last = null;
     var r = $("#results"); r.hidden = true; r.innerHTML = ""; $("#error").hidden = true;
     document.body.classList.remove("has-results");
+    renderStepper(); ["front", "crown"].forEach(renderSlotStatus);
     $("#check").scrollIntoView({ behavior: smooth(), block: "start" });
   }
 
@@ -377,7 +420,30 @@
     [["mon_requests", s.requests], ["mon_failed", s.failed], ["mon_photos", s.photos_checked], ["mon_outside", share], ["mon_median", med], ["mon_p95", p95]].forEach(function (p) {
       host.appendChild(el("div", null, "<dt>" + esc(t(p[0])) + "</dt><dd>" + esc(p[1]) + "</dd>"));
     });
+    renderCharts(s);
     var up = $("#updated"); if (up && S.statsAt) up.textContent = t("mon_updated") + " " + S.statsAt.toLocaleTimeString();
+  }
+  /* Bars built only from what /stats really returns: answers given and photo-type checks. Nothing is invented. */
+  function stack(parts, total) {
+    var bar = el("div", "stack"), lg = el("ul", "legend");
+    parts.forEach(function (p) {
+      var i = el("i", "s-" + p.key); i.style.width = (total ? p.n / total * 100 : 0) + "%"; bar.appendChild(i);
+      lg.appendChild(el("li", null, '<span class="sw s-' + p.key + '"></span>' + esc(p.label) + " <b>" + p.n + "</b>"));
+    });
+    bar.setAttribute("role", "img"); bar.setAttribute("aria-label", parts.map(function (p) { return p.label + " " + p.n; }).join(", "));
+    var f = document.createDocumentFragment(); f.appendChild(bar); f.appendChild(lg); return f;
+  }
+  function renderCharts(s) {
+    var host = $("#stat-charts"); if (!host) return; host.innerHTML = "";
+    if (!s || !s.requests) return;
+    var v = s.verdicts || {}, vk = ["possible", "none_seen", "unsure", "unsuitable"];
+    var vt = vk.reduce(function (a, k) { return a + (v[k] || 0); }, 0);
+    var c1 = el("section", "mon-card", "<h3>" + esc(t("p_mon_v_title")) + "</h3><p class=\"small muted\">" + esc(t("p_mon_v_d")) + "</p>");
+    c1.appendChild(stack(vk.map(function (k) { return { key: k, n: v[k] || 0, label: t("v_" + k) }; }), vt)); host.appendChild(c1);
+    var pc = s.photo_check || {}, pk = [["match", "p_ph_m"], ["partial", "p_ph_p"], ["mismatch", "p_ph_x"]];
+    var pt = pk.reduce(function (a, k) { return a + (pc[k[0]] || 0); }, 0);
+    var c2 = el("section", "mon-card", "<h3>" + esc(t("p_mon_pc_title")) + "</h3><p class=\"small muted\">" + esc(t("p_mon_pc_d")) + "</p>");
+    c2.appendChild(stack(pk.map(function (k) { return { key: k[0], n: pc[k[0]] || 0, label: t(k[1]) }; }), pt)); host.appendChild(c2);
   }
   function renderModels() {
     var host = $("#model-table"); if (!host) return;
@@ -411,6 +477,11 @@
 
   /* ---------- start ---------- */
   function init() {
+    injectIcons(document);
+    var mb = $("#menu-btn"); if (mb) mb.addEventListener("click", function () { setMenu(!$("#mnav").classList.contains("open")); });
+    var mn = $("#mnav"); if (mn) mn.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && mn && mn.classList.contains("open")) { setMenu(false); mb.focus(); } });
+    window.addEventListener("resize", function () { if (window.innerWidth > 1100) setMenu(false); });
     wireSlots();
     if ($("#run")) $("#run").addEventListener("click", run);
     var rt = $("#retry"); if (rt) rt.addEventListener("click", run);

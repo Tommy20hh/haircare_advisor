@@ -5,55 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hair &amp; Scalp Care Advisor</title>
 <meta name="description" content="Educational photo check for hair and scalp: plain-language answers with a clear note on how far to trust them.">
-<meta name="theme-color" content="#F7F4ED">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/ibm-plex-sans-thai-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/fraunces-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body data-page="monitoring">
 <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
-<div class="shell">
-<header class="topbar" id="top">
-  <a class="brand" href="index.html"><span class="brandmark" aria-hidden="true">h</span><span class="t" data-i18n="app_title">Hair &amp; Scalp Care Advisor</span></a>
-  <nav class="nav" aria-label="Pages">
-    <a href="index.html" data-i18n="nav_check">Check photos</a>
-    <a href="details.html" data-i18n="nav_performance">Model performance</a>
-    <a href="monitoring.html" aria-current="page" data-i18n="nav_monitoring">Service monitoring</a>
-  </nav>
-  <div class="lang" role="group" aria-label="Language / ภาษา">
-    <button type="button" data-lang="en" aria-pressed="true">EN</button>
-    <button type="button" data-lang="th" aria-pressed="false">ไทย</button>
+<div class="proto-bar" role="region" data-i18n-aria="disclaimer_pill" data-i18n="disclaimer_pill">Educational demo · not medical advice</div>
+<header class="header">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="46" height="46"><span><b data-i18n="app_title">Hair &amp; Scalp Care Advisor</b><small data-i18n="p_tagline_short">AI Hair Analysis</small></span></a>
+    <nav class="nav" aria-label="Pages"><a href="index.html" data-i18n="p_n_home">p_n_home</a><a href="check.html" data-i18n="nav_check">nav_check</a><a href="details.html" data-i18n="nav_performance">nav_performance</a><a href="monitoring.html" aria-current="page" data-i18n="nav_monitoring">nav_monitoring</a></nav>
+    <div class="header-tools">
+      <div class="seg lang" role="group" aria-label="Language / ภาษา">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="th" aria-pressed="false">ไทย</button>
+      </div>
+      <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mnav" data-i18n-aria="p_menu" data-icon="menu"></button>
+    </div>
   </div>
 </header>
-<noscript><p class="notice notice-bad nojs">This page needs JavaScript to work. / หน้านี้ต้องเปิดใช้ JavaScript จึงจะทำงานได้</p></noscript>
-<main id="main">
+<div class="mnav" id="mnav"><a href="index.html"><span data-i18n="p_n_home">p_n_home</span><span class="ico-i " data-icon="right"></span></a><a href="check.html"><span data-i18n="nav_check">nav_check</span><span class="ico-i " data-icon="right"></span></a><a href="details.html"><span data-i18n="nav_performance">nav_performance</span><span class="ico-i " data-icon="right"></span></a><a href="monitoring.html" aria-current="page"><span data-i18n="nav_monitoring">nav_monitoring</span><span class="ico-i " data-icon="right"></span></a></div>
+<noscript><p class="nojs">This page needs JavaScript to work. / หน้านี้ต้องเปิดใช้ JavaScript จึงจะทำงานได้</p></noscript>
+<main id="main" tabindex="-1">
+<div class="wrap page-top">
 <section class="page-head">
   <div class="eyebrow" data-i18n="svc_eyebrow"></div>
   <h1 data-i18n="mon_title"></h1>
   <p class="sec-lead"><span data-i18n="mon_lead"></span> <span data-i18n="mon_why"></span></p>
 </section>
-
 <section class="band">
   <div id="server-warn" class="notice notice-bad" role="alert" hidden></div>
   <h2 data-i18n="mon_traffic"></h2>
   <dl id="stats" class="stats"></dl>
+  <div id="stat-charts" class="mon-grid"></div>
   <div class="band-links"><button type="button" class="btn btn-quiet" id="refresh" data-i18n="mon_refresh"></button> <span class="small-note" id="updated"></span></div>
 </section>
-
 <section class="band">
   <h2 data-i18n="mon_health"></h2>
   <div id="health-panel" class="table-wrap"></div>
   <p class="small-note" data-i18n="mon_explain"></p>
   <div class="band-links"><a class="btn btn-quiet" href="health">/health</a> <a class="btn btn-quiet" href="stats">/stats</a> <a class="btn btn-quiet" href="docs">/docs</a></div>
 </section>
+</div>
 </main>
 <footer class="foot">
-  <p data-i18n="foot"></p>
-  <p><span id="ver"></span> · <a href="docs" data-i18n="footer_api" id="api-link">API documentation</a></p>
+  <div class="wrap foot-in">
+    <div><p data-i18n="foot"></p><p><span id="ver"></span> · <a href="docs" data-i18n="footer_api" id="api-link">API documentation</a></p></div>
+    <nav aria-label="Footer"><a href="index.html" data-i18n="p_n_home">p_n_home</a><a href="check.html" data-i18n="nav_check">nav_check</a><a href="details.html" data-i18n="nav_performance">nav_performance</a><a href="monitoring.html" data-i18n="nav_monitoring">nav_monitoring</a></nav>
+  </div>
 </footer>
-</div>
 <script src="js/app.js"></script>
 </body>
 </html>

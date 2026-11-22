@@ -1,4 +1,4 @@
-"""Website checks: every i18n key used by index.html / app.js exists, EN and TH have identical keys,
+"""Website checks: every i18n key used by the pages / app.js exists, EN and TH have identical keys,
 JavaScript parses, local asset links exist. Run: python tests/test_web.py"""
 import json
 import os
@@ -8,7 +8,7 @@ import subprocess
 W = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "web")
 d = json.load(open(os.path.join(W, "data", "i18n.json"), encoding="utf-8"))
 assert set(d["en"]) == set(d["th"]), set(d["en"]) ^ set(d["th"])
-PAGES = ("index.html", "details.html", "monitoring.html")
+PAGES = ("index.html", "check.html", "details.html", "monitoring.html")
 html = "".join(open(os.path.join(W, f), encoding="utf-8").read() for f in PAGES)
 js = open(os.path.join(W, "js", "app.js"), encoding="utf-8").read()
 used = set(re.findall(r'data-i18n(?:-list)?="([^"]+)"', html)) | set(re.findall(r'\bt\("([a-z0-9_]+)"', js))
