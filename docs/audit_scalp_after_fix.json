@@ -1,0 +1,96 @@
+{
+  "n_images": 883,
+  "unreadable": [],
+  "near_duplicate_pairs_total": 310,
+  "near_duplicate_pairs_same_split": 310,
+  "near_duplicate_pairs_across_splits": 0,
+  "duplicate_groups": 111,
+  "largest_group": 3,
+  "test_images_with_a_near_duplicate_in_train_or_val": 0,
+  "n_test": 177,
+  "leak_pairs_by_source": {},
+  "by_source": {
+    "extra_dandruff_big_chunks": {
+      "n": 353,
+      "split": {
+        "train": 282,
+        "test": 71
+      },
+      "dryness": {
+        "pos": 0,
+        "neg": 0,
+        "unknown": 353
+      },
+      "dandruff": {
+        "pos": 353,
+        "neg": 0,
+        "unknown": 0
+      },
+      "low_density": {
+        "pos": 0,
+        "neg": 0,
+        "unknown": 353
+      },
+      "group": {
+        "pos": 0,
+        "neg": 0,
+        "unknown": 0
+      }
+    },
+    "healthy_scalp": {
+      "n": 350,
+      "split": {
+        "train": 280,
+        "test": 70
+      },
+      "dryness": {
+        "pos": 0,
+        "neg": 350,
+        "unknown": 0
+      },
+      "dandruff": {
+        "pos": 0,
+        "neg": 350,
+        "unknown": 0
+      },
+      "low_density": {
+        "pos": 0,
+        "neg": 350,
+        "unknown": 0
+      },
+      "group": {
+        "pos": 0,
+        "neg": 0,
+        "unknown": 0
+      }
+    },
+    "roboflow_hairdata": {
+      "n": 180,
+      "split": {
+        "train": 144,
+        "test": 36
+      },
+      "dryness": {
+        "pos": 48,
+        "neg": 132,
+        "unknown": 0
+      },
+      "dandruff": {
+        "pos": 94,
+        "neg": 86,
+        "unknown": 0
+      },
+      "low_density": {
+        "pos": 61,
+        "neg": 119,
+        "unknown": 0
+      },
+      "group": {
+        "pos": 1,
+        "neg": 1,
+        "unknown": 0
+      }
+    }
+  },
+  "hamming_threshold_bits_of_256": 10
+}

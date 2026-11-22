@@ -1,0 +1,38 @@
+{
+ "source": "docs/experiment_log.md (style-free scalp test, bootstrap 95% range); balding from single-source test",
+ "items": [
+  {
+   "name": "balding",
+   "auroc": 0.993,
+   "lo": 0.987,
+   "hi": 0.998,
+   "n": null,
+   "pos": null,
+   "single_source": true
+  },
+  {
+   "name": "dryness",
+   "auroc": 0.8,
+   "lo": 0.63,
+   "hi": 0.93,
+   "n": 37,
+   "pos": 10
+  },
+  {
+   "name": "dandruff",
+   "auroc": 0.878,
+   "lo": 0.75,
+   "hi": 0.97,
+   "n": 37,
+   "pos": 16
+  },
+  {
+   "name": "low_density",
+   "auroc": 0.821,
+   "lo": 0.66,
+   "hi": 0.94,
+   "n": 37,
+   "pos": 15
+  }
+ ]
+}

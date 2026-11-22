@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" role="img" aria-label="Top-of-head photo guide">
+  <ellipse cx="120" cy="120" rx="104" ry="96" fill="#EBD9CB" stroke="#0B4F4A" stroke-width="2.5"/>
+  <path d="M120 30v180" stroke="#F2F5F4" stroke-width="12" stroke-linecap="round"/>
+  <g stroke="#0B4F4A" stroke-width="2" stroke-linecap="round">
+    <path d="M112 36C84 44 56 66 38 96M112 56C86 62 62 80 48 106M112 80C90 86 70 100 60 122M112 106C96 110 82 120 74 138M112 136C100 140 90 150 84 166M112 166C104 170 98 178 94 190"/>
+    <path d="M128 36c28 8 56 30 74 60M128 56c26 6 50 24 64 50M128 80c22 6 42 20 52 42M128 106c16 4 30 14 38 32M128 136c12 4 22 14 28 30M128 166c8 4 14 12 18 24"/>
+  </g>
+  <path d="M120 24v192" stroke="#B45309" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,30 @@
+{
+  "n_images": 9094,
+  "unreadable": [],
+  "near_duplicate_pairs_total": 18,
+  "near_duplicate_pairs_same_split": 17,
+  "near_duplicate_pairs_across_splits": 1,
+  "duplicate_groups": 18,
+  "largest_group": 2,
+  "test_images_with_a_near_duplicate_in_train_or_val": 1,
+  "n_test": 842,
+  "leak_pairs_by_source": {
+    "kaggle_balding <-> kaggle_balding": 1
+  },
+  "by_source": {
+    "kaggle_balding": {
+      "n": 9094,
+      "split": {
+        "train": 7312,
+        "val": 940,
+        "test": 842
+      },
+      "balding": {
+        "pos": 4547,
+        "neg": 4547,
+        "unknown": 0
+      }
+    }
+  },
+  "hamming_threshold_bits_of_256": 10
+}

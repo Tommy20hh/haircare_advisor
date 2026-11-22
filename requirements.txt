@@ -1,0 +1,13 @@
+# After your first working install, record exact versions:  pip freeze > requirements.lock.txt
+torch>=2.3.0
+torchvision>=0.18.0
+scikit-learn>=1.3.0
+pandas>=2.0.0
+numpy>=1.24.0
+Pillow>=13.0.0       # opens every uploaded photo: versions below 13 have known security advisories (see docs/privacy_and_security.md)
+matplotlib>=3.7.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+pydantic>=2.7.0
+httpx>=0.27.0        # only for tests/test_service.py

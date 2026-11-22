@@ -1,0 +1,9 @@
+Fonts in this folder are self-hosted so the site makes no requests to other websites.
+
+Fraunces            - Copyright 2020 The Fraunces Project Authors (github.com/undercasetype/Fraunces)
+IBM Plex Sans Thai  - Copyright 2023 IBM Corp. (Bangkok Font Co. Ltd.)
+Noto Serif Thai     - Copyright 2022 The Noto Project Authors
+
+All three are licensed under the SIL Open Font License, Version 1.1:
+https://openfontlicense.org
+Obtained via the Fontsource npm packages @fontsource/fraunces, @fontsource/ibm-plex-sans-thai and @fontsource/noto-serif-thai.

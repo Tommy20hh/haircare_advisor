@@ -1,0 +1,17 @@
+# models and raw data stay out of git: too big, and not ours to publish
+checkpoints/
+*.pt
+data/raw/
+# personal photos, test runs and request logs
+test_photos/
+logs/
+# archives, backups and caches
+_after_nov3/
+_backup_v1.1/
+_to_delete/
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+*.zip
