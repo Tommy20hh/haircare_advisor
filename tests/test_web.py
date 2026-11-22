@@ -24,7 +24,18 @@ assert not missing, missing
 r = subprocess.run(["node", "--check", os.path.join(W, "js", "app.js")], capture_output=True, text=True)
 assert r.returncode == 0, r.stderr
 for a in re.findall(r'(?:src|href)="((?:assets|css|js)/[^"]+)"', html):
-    assert os.path.exists(os.path.join(W, a)), a
+    assert os.path.exists(os.path.join(W, a.split("?")[0])), a
+
+# --- cache busting: a browser that cached an old site.css / app.js / i18n.json must be forced to fetch the new ones.
+# (A half-old page showed raw translation keys and giant images when this was missing.) One tag, used everywhere.
+tags = set(re.findall(r'(?:css/site\.css|js/app\.js)\?v=([0-9A-Za-z.]+)"', html))
+assert len(tags) == 1, "every page must load site.css and app.js with the same ?v= tag: " + str(tags)
+assert re.findall(r'(?:css/site\.css|js/app\.js)"', html) == [], "a page loads site.css or app.js without ?v="
+assert 'var ASSET_V = "%s"' % next(iter(tags)) in js, "ASSET_V in app.js must equal the ?v= tag in the pages"
+assert "i18n.json?v=" in js and "accuracy.json?v=" in js
+# every translation key a page uses (static attributes included) must exist in EN and TH
+used_attr = set(re.findall(r'data-i18n(?:-[a-z]+)?="([^"]+)"', html))
+assert not [k for k in used_attr if k not in d["en"]], [k for k in used_attr if k not in d["en"]]
 
 # --- the pages must work under the strict Content-Security-Policy the service sends (and contact no other website) ---
 css = open(os.path.join(W, "css", "site.css"), encoding="utf-8").read()

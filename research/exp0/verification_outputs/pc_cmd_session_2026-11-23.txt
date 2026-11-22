@@ -1,0 +1,283 @@
+C:\Haircare\v4\hair_care_advisor>set PY=C:\Haircare\hair_care_advisor\venv\Scripts\python.exe
+
+C:\Haircare\v4\hair_care_advisor>"%PY%" research\exp0\verify_split.py C:\Haircare\kaggle_upload\raw
+PASS sha256 data/scalp_labels.csv - e0390abb4caf
+PASS sha256 data/balding_labels.csv - 0215a9723b7d
+PASS scalp rows 883 = 709 train + 174 test - 709+174
+PASS scalp no duplicate filepaths
+PASS scalp no train/test filepath overlap
+PASS scalp no train/test group overlap
+PASS hairdata test = 37 (10/16/15 positives) - 37 10/16/15
+PASS balding test = 841 - 841
+PASS balding no train/test group overlap
+PASS frozen list matches scalp_test_174.csv
+PASS frozen list matches scalp_hairdata_test_37.csv
+PASS frozen list matches balding_test_841.csv
+PASS every photo of scalp_test_174.csv exists under C:\Haircare\kaggle_upload\raw - 0 missing
+PASS every photo of balding_test_841.csv exists under C:\Haircare\kaggle_upload\raw - 0 missing
+ALL CHECKS PASSED
+
+C:\Haircare\v4\hair_care_advisor>"%PY%" research\exp0\record_environment.py
+{
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Haircare\\hair_care_advisor\\venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "machine": "AMD64",
+  "processor_string": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+  "logical_cpus": 12,
+  "torch": "2.15.0+cpu",
+  "torchvision": "0.29.2+cpu",
+  "PIL": "13.0.0",
+  "numpy": "2.5.4",
+  "pandas": "3.1.1",
+  "sklearn": "1.9.1",
+  "fastapi": "0.162.5",
+  "uvicorn": "0.54.0",
+  "cuda_available": false,
+  "torch_cuda_build": null,
+  "torch_threads": 6,
+  "ram_gb": 15.9,
+  "cpu_name": "not available",
+  "gpu_names": "not available"
+}
+
+C:\Haircare\v4\hair_care_advisor>"%PY%" research\exp0\gate_overlap_audit.py --task scalp --labels data\scalp_labels.csv --img-dir C:\Haircare\kaggle_upload\raw --checkpoint checkpoints\scalp_model.pt
+C:\Haircare\hair_care_advisor\venv\Lib\site-packages\PIL\Image.py:3593: DecompressionBombWarning: Image size (108000000 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+{
+  "task": "scalp",
+  "checkpoint": "checkpoints\\scalp_model.pt",
+  "bank_rows": 709,
+  "labels_train_val_rows": 709,
+  "test_rows": 174,
+  "n_train_field": 709,
+  "thresholds": {
+    "exact": 0.9995,
+    "near": 0.98
+  },
+  "control": {
+    "train_photos": 709,
+    "own_row_matched_exact": 697,
+    "argmax_equals_own_row": 709,
+    "min_own_similarity": 0.9987793564796448,
+    "bank_rows_unexplained_by_any_train_photo": 12
+  },
+  "test": {
+    "photos": 174,
+    "exact_matches": 0,
+    "near_matches": 0,
+    "max_similarity": 0.9686453342437744,
+    "median_similarity": 0.7068319320678711,
+    "by_source": {
+      "extra_dandruff_big_chunks": {
+        "n": 69,
+        "exact": 0,
+        "near": 0
+      },
+      "healthy_scalp": {
+        "n": 68,
+        "exact": 0,
+        "near": 0
+      },
+      "roboflow_hairdata": {
+        "n": 37,
+        "exact": 0,
+        "near": 0
+      }
+    }
+  }
+}
+
+C:\Haircare\v4\hair_care_advisor>"%PY%" research\exp0\smoke_real_model.py --raw C:\Haircare\kaggle_upload\raw
+{
+  "load_seconds": 0.7,
+  "slots_loaded": [
+    "crown",
+    "front"
+  ],
+  "cases": [
+    {
+      "slot": "crown",
+      "filepath": "dryness_dandruff/test/istockphoto-1150345636-612x612_jpg.rf.DWaO2H3VZ9aaKmkfzTqb.jpg",
+      "seconds": 0.25,
+      "status": "partial",
+      "tier": "unfamiliar",
+      "flags": [
+        "dark"
+      ],
+      "verdicts": {
+        "dryness": {
+          "verdict": "unsure",
+          "reliability": "low"
+        },
+        "dandruff": {
+          "verdict": "unsure",
+          "reliability": "low"
+        },
+        "low_density": {
+          "verdict": "unsure",
+          "reliability": "low"
+        }
+      }
+    },
+    {
+      "slot": "crown",
+      "filepath": "dryness_dandruff/train/istockphoto-1168818750-612x612_jpg.rf.0hUFLl5GTxUmKS3KRefy.jpg",
+      "seconds": 0.24,
+      "status": "match",
+      "tier": "familiar",
+      "flags": [],
+      "verdicts": {
+        "dryness": {
+          "verdict": "none_seen",
+          "reliability": "limited"
+        },
+        "dandruff": {
+          "verdict": "unsure",
+          "reliability": "low"
+        },
+        "low_density": {
+          "verdict": "none_seen",
+          "reliability": "limited"
+        }
+      }
+    },
+    {
+      "slot": "crown",
+      "filepath": "dryness_dandruff/train/istockphoto-460860711-612x612_jpg.rf.1IIafyX1jqdeTYQZClmc.jpg",
+      "seconds": 0.24,
+      "status": "match",
+      "tier": "familiar",
+      "flags": [],
+      "verdicts": {
+        "dryness": {
+          "verdict": "unsure",
+          "reliability": "low"
+        },
+        "dandruff": {
+          "verdict": "none_seen",
+          "reliability": "limited"
+        },
+        "low_density": {
+          "verdict": "unsure",
+          "reliability": "low"
+        }
+      }
+    },
+    {
+      "slot": "front",
+      "filepath": "balding/Dataset/Test/Bald/163920.jpg",
+      "seconds": 0.12,
+      "status": "partial",
+      "tier": "familiar",
+      "flags": [
+        "small"
+      ],
+      "verdicts": {
+        "balding": {
+          "verdict": "possible",
+          "reliability": "limited"
+        }
+      }
+    },
+    {
+      "slot": "front",
+      "filepath": "balding/Dataset/Test/Bald/172918.jpg",
+      "seconds": 0.12,
+      "status": "partial",
+      "tier": "familiar",
+      "flags": [
+        "small"
+      ],
+      "verdicts": {
+        "balding": {
+          "verdict": "possible",
+          "reliability": "limited"
+        }
+      }
+    },
+    {
+      "slot": "front",
+      "filepath": "balding/Dataset/Test/Bald/167819.jpg",
+      "seconds": 0.11,
+      "status": "partial",
+      "tier": "familiar",
+      "flags": [
+        "small"
+      ],
+      "verdicts": {
+        "balding": {
+          "verdict": "possible",
+          "reliability": "limited"
+        }
+      }
+    }
+  ]
+}
+
+C:\Haircare\v4\hair_care_advisor>git status --short
+ M .gitignore
+ M data/scalp_labels.csv
+ M docs/dataset_audit.md
+ M service/main.py
+ M tests/test_service.py
+ M tests/test_web.py
+ M web/check.html
+ M web/details.html
+ M web/index.html
+ M web/js/app.js
+ M web/monitoring.html
+?? research/
+?? tests/test_browser.py
+
+C:\Haircare\v4\hair_care_advisor>git diff --stat -- src service web checkpoints
+warning: in the working copy of 'service/main.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/check.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/details.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/js/app.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/monitoring.html', LF will be replaced by CRLF the next time Git touches it
+ service/main.py     | 4 ++++
+ web/check.html      | 4 ++--
+ web/details.html    | 4 ++--
+ web/index.html      | 4 ++--
+ web/js/app.js       | 5 +++--
+ web/monitoring.html | 4 ++--
+ 6 files changed, 15 insertions(+), 10 deletions(-)
+
+C:\Haircare\v4\hair_care_advisor>"%PY%" research\exp0\gate_overlap_audit.py --task balding --labels data\balding_labels.csv --img-dir C:\Haircare\kaggle_upload\raw --checkpoint checkpoints\balding_model.pt
+{
+  "task": "balding",
+  "checkpoint": "checkpoints\\balding_model.pt",
+  "bank_rows": 8253,
+  "labels_train_val_rows": 8253,
+  "test_rows": 841,
+  "n_train_field": 8253,
+  "thresholds": {
+    "exact": 0.9995,
+    "near": 0.98
+  },
+  "control": {
+    "train_photos": 8253,
+    "own_row_matched_exact": 8253,
+    "argmax_equals_own_row": 8253,
+    "min_own_similarity": 0.9998717308044434,
+    "bank_rows_unexplained_by_any_train_photo": 0
+  },
+  "test": {
+    "photos": 841,
+    "exact_matches": 0,
+    "near_matches": 0,
+    "max_similarity": 0.9733030796051025,
+    "median_similarity": 0.810247540473938,
+    "by_source": {
+      "kaggle_balding": {
+        "n": 841,
+        "exact": 0,
+        "near": 0
+      }
+    }
+  }
+}
+
+C:\Haircare\v4\hair_care_advisor>

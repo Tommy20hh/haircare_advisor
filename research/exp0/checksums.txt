@@ -1,0 +1,18 @@
+# SHA-256 hashes recorded 2026-11-22 (Experiment 0)
+## Checkpoints (file bytes differ between Kaggle copy and deployed copy; tensor data identical - see below)
+ad64d40839e9d37e92664b4758dff96aa7b70f2986d9855327d073d99a4ad82e  v4_results/checkpoints/balding_model.pt
+0b3bacf246894e45b40f47c50f5827a7cf640cccbc2756f215fda263c7cf27bc  v4_results/checkpoints/scalp_model.pt
+6d1fff44334f894b7368695b89b8348b27eb96f98cd3f23375f0a9167f489df1  v4/hair_care_advisor/checkpoints/balding_model.pt
+f0bba89ec727174af4dfa8afdacab5ab6e31d124b76f3d80364d76e65ca610ef  v4/hair_care_advisor/checkpoints/scalp_model.pt
+
+## Label files
+e0390abb4cafb7768f19cbe68ac8a46b654fe02d38144871554f83284754fd9e  v4_results/data/scalp_labels.csv
+8812e37bdf07c2b055a06b3119551a107b5651050f2de27609c4f9f87ad232a5  v4/hair_care_advisor/data/scalp_labels.csv
+0215a9723b7d7f48ff52f5bb261d6acd0aa4b04fcbdf2ec5b072da3486bbbb16  v4_results/data/balding_labels.csv
+
+## Frozen lists (this folder)
+2d0cd8ea24b3a9c0fce9b4840982ea9b5860ce0b8d63119bc328533b2072ddec  frozen_lists/balding_test_841.csv
+e6be4b663c0f8607e20990e02e5f6dcb6e9f6f364265743e0e3a616591358bfc  frozen_lists/scalp_hairdata_test_37.csv
+5047130b377d4004ff968cc135e09fed1810b93e21537f23b45a9b03a04940d4  frozen_lists/scalp_test_174.csv
+8812e37bdf07c2b055a06b3119551a107b5651050f2de27609c4f9f87ad232a5  backup/scalp_labels.repo_original_sha256_8812e37b.csv
+e391289161404b3b5b849b189b9fe5b138654fb763c848df83efa7da0a15bca5  verify_split.py

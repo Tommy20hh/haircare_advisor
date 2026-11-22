@@ -1,0 +1,43 @@
+{
+  "task": "scalp",
+  "checkpoint": "checkpoints\\scalp_model.pt",
+  "bank_rows": 709,
+  "labels_train_val_rows": 709,
+  "test_rows": 174,
+  "n_train_field": 709,
+  "thresholds": {
+    "exact": 0.9995,
+    "near": 0.98
+  },
+  "control": {
+    "train_photos": 709,
+    "own_row_matched_exact": 697,
+    "argmax_equals_own_row": 709,
+    "min_own_similarity": 0.9987793564796448,
+    "bank_rows_unexplained_by_any_train_photo": 12
+  },
+  "test": {
+    "photos": 174,
+    "exact_matches": 0,
+    "near_matches": 0,
+    "max_similarity": 0.9686453342437744,
+    "median_similarity": 0.7068319320678711,
+    "by_source": {
+      "extra_dandruff_big_chunks": {
+        "n": 69,
+        "exact": 0,
+        "near": 0
+      },
+      "healthy_scalp": {
+        "n": 68,
+        "exact": 0,
+        "near": 0
+      },
+      "roboflow_hairdata": {
+        "n": 37,
+        "exact": 0,
+        "near": 0
+      }
+    }
+  }
+}

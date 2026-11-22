@@ -9,6 +9,7 @@
   var SHRINK_ABOVE = 9 * 1024 * 1024;      // only photos this big are shrunk on the phone; everything else is sent untouched
   var SHRINK_SIDE = 2048;
   var TIMEOUT_MS = 90 * 1000;
+  var ASSET_V = "20261123";               // same tag as the ?v= on css/site.css and js/app.js in every page. Change all of them together when the website files change: a new URL cannot be answered from a browser's old cache.
   var RETRY_CODES = ["network", "timeout", "server_error", "other"];
   var S = { lang: "en", i18n: null, files: { front: null, crown: null }, urls: {}, last: null, busy: false, health: null };
 
@@ -491,8 +492,8 @@
     if (saved === "th" || saved === "en") S.lang = saved;
     else if ((navigator.language || "").toLowerCase().indexOf("th") === 0) S.lang = "th";
     Promise.all([
-      fetch("data/i18n.json").then(function (r) { return r.json(); }),
-      fetch("data/accuracy.json").then(function (r) { return r.json(); }).catch(function () { return null; })
+      fetch("data/i18n.json?v=" + ASSET_V).then(function (r) { return r.json(); }),
+      fetch("data/accuracy.json?v=" + ASSET_V).then(function (r) { return r.json(); }).catch(function () { return null; })
     ]).then(function (v) {
       S.i18n = v[0]; S.accuracy = v[1]; applyStatic(); loadHealth(); loadStats();
     });

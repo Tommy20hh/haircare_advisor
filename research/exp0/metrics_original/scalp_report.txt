@@ -1,0 +1,31 @@
+TASK: scalp | test images: 174 | ensemble size: 5 | temperature: 1.00
+Decision thresholds (tuned on out-of-fold data): {'dryness': 0.42, 'dandruff': 0.86, 'low_density': 0.72}; inconclusive band +-0.1
+
+[dryness]  tested on 105 images (10 positive)
+  precision 0.5  recall 0.5  F1 0.5 (95% CI [0.211, 0.741])  specificity 0.947
+  AUROC 0.939 (95% CI [0.882, 0.982])  average precision 0.675
+  accuracy 0.905 vs always-majority baseline 0.905
+  calibration error (ECE): 0.062 before -> 0.062 after calibration
+  says 'inconclusive' on 5% of photos; accuracy on the rest: 0.92
+  style-free check (AUROC inside one photo source): roboflow_hairdata 0.8 (95% CI [0.625, 0.931], n=37, 10 pos)
+
+[dandruff]  tested on 174 images (85 positive)
+  precision 0.988  recall 0.929  F1 0.958 (95% CI [0.919, 0.987])  specificity 0.989
+  AUROC 0.991 (95% CI [0.981, 0.998])  average precision 0.991
+  accuracy 0.96 vs always-majority baseline 0.511
+  calibration error (ECE): 0.021 before -> 0.021 after calibration
+  says 'inconclusive' on 5% of photos; accuracy on the rest: 0.958
+  style-free check (AUROC inside one photo source): roboflow_hairdata 0.878 (95% CI [0.753, 0.968], n=37, 16 pos)
+
+[low_density]  tested on 105 images (15 positive)
+  precision 0.667  recall 0.4  F1 0.5 (95% CI [0.211, 0.72])  specificity 0.967
+  AUROC 0.946 (95% CI [0.897, 0.979])  average precision 0.744
+  accuracy 0.886 vs always-majority baseline 0.857
+  calibration error (ECE): 0.087 before -> 0.087 after calibration
+  says 'inconclusive' on 4% of photos; accuracy on the rest: 0.891
+  style-free check (AUROC inside one photo source): roboflow_hairdata 0.821 (95% CI [0.664, 0.94], n=37, 15 pos)
+
+Average predicted probability by image source (large gaps can mean the model keys on photo style):
+  extra_dandruff_big_chunks n=69   dryness=0.13  dandruff=0.99  low_density=0.24
+  healthy_scalp          n=68   dryness=0.01  dandruff=0.04  low_density=0.02
+  roboflow_hairdata      n=37   dryness=0.29  dandruff=0.48  low_density=0.39

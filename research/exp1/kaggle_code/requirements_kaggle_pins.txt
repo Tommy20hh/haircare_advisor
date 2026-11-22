@@ -1,0 +1,5 @@
+# FLOOR ONLY (verified: Qwen3-VL README says transformers >= 4.57.0).
+# After the smoke test succeeds, REPLACE these with the exact versions printed by the notebook and use '==' for the pilot and final runs.
+transformers>=4.57.0
+accelerate
+# torch, torchvision and Pillow come preinstalled on Kaggle; record them from the smoke-test metadata (do not reinstall torch).

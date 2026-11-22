@@ -1,0 +1,125 @@
+{
+  "load_seconds": 0.7,
+  "slots_loaded": [
+    "crown",
+    "front"
+  ],
+  "cases": [
+    {
+      "slot": "crown",
+      "filepath": "dryness_dandruff/test/istockphoto-1150345636-612x612_jpg.rf.DWaO2H3VZ9aaKmkfzTqb.jpg",
+      "seconds": 0.25,
+      "status": "partial",
+      "tier": "unfamiliar",
+      "flags": [
+        "dark"
+      ],
+      "verdicts": {
+        "dryness": {
+          "verdict": "unsure",
+          "reliability": "low"
+        },
+        "dandruff": {
+          "verdict": "unsure",
+          "reliability": "low"
+        },
+        "low_density": {
+          "verdict": "unsure",
+          "reliability": "low"
+        }
+      }
+    },
+    {
+      "slot": "crown",
+      "filepath": "dryness_dandruff/train/istockphoto-1168818750-612x612_jpg.rf.0hUFLl5GTxUmKS3KRefy.jpg",
+      "seconds": 0.24,
+      "status": "match",
+      "tier": "familiar",
+      "flags": [],
+      "verdicts": {
+        "dryness": {
+          "verdict": "none_seen",
+          "reliability": "limited"
+        },
+        "dandruff": {
+          "verdict": "unsure",
+          "reliability": "low"
+        },
+        "low_density": {
+          "verdict": "none_seen",
+          "reliability": "limited"
+        }
+      }
+    },
+    {
+      "slot": "crown",
+      "filepath": "dryness_dandruff/train/istockphoto-460860711-612x612_jpg.rf.1IIafyX1jqdeTYQZClmc.jpg",
+      "seconds": 0.24,
+      "status": "match",
+      "tier": "familiar",
+      "flags": [],
+      "verdicts": {
+        "dryness": {
+          "verdict": "unsure",
+          "reliability": "low"
+        },
+        "dandruff": {
+          "verdict": "none_seen",
+          "reliability": "limited"
+        },
+        "low_density": {
+          "verdict": "unsure",
+          "reliability": "low"
+        }
+      }
+    },
+    {
+      "slot": "front",
+      "filepath": "balding/Dataset/Test/Bald/163920.jpg",
+      "seconds": 0.12,
+      "status": "partial",
+      "tier": "familiar",
+      "flags": [
+        "small"
+      ],
+      "verdicts": {
+        "balding": {
+          "verdict": "possible",
+          "reliability": "limited"
+        }
+      }
+    },
+    {
+      "slot": "front",
+      "filepath": "balding/Dataset/Test/Bald/172918.jpg",
+      "seconds": 0.12,
+      "status": "partial",
+      "tier": "familiar",
+      "flags": [
+        "small"
+      ],
+      "verdicts": {
+        "balding": {
+          "verdict": "possible",
+          "reliability": "limited"
+        }
+      }
+    },
+    {
+      "slot": "front",
+      "filepath": "balding/Dataset/Test/Bald/167819.jpg",
+      "seconds": 0.11,
+      "status": "partial",
+      "tier": "familiar",
+      "flags": [
+        "small"
+      ],
+      "verdicts": {
+        "balding": {
+          "verdict": "possible",
+          "reliability": "limited"
+        }
+      }
+    }
+  ]
+}

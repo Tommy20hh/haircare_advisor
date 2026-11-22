@@ -14,10 +14,12 @@ Attribution is required for the CC BY 4.0 sets; list them in the report.
 | Source | n (train / test) | dryness | dandruff | low density |
 |---|---|---|---|---|
 | roboflow_hairdata | 180 (143 / 37) | 48 pos / 132 neg | 94 pos / 86 neg | 61 pos / 119 neg |
-| extra_dandruff_big_chunks | 353 (282 / 71) | unknown | 353 pos / 0 neg | unknown |
-| healthy_scalp | 350 (280 / 70) | 350 neg | 350 neg | 350 neg |
+| extra_dandruff_big_chunks | 353 (284 / 69) | unknown | 353 pos / 0 neg | unknown |
+| healthy_scalp | 350 (282 / 68) | 350 neg | 350 neg | 350 neg |
 
 Only `roboflow_hairdata` contains both positives and negatives for every condition. It is the **only** place a style-free test is possible. Its test part: 37 photos (dryness 10 pos, dandruff 16 pos, low density 15 pos), as in `experiment_log.md`. (An earlier version of this file said 36 photos and 19 / 12 positives; the experiment log is the record of the real run.)
+
+**Split provenance (Experiment 0, 2026-11).** `data/scalp_labels.csv` is the label file saved with the Kaggle run outputs that produced the shipped scalp model (its 709 train rows are exactly the 709 rows of that run's out-of-fold predictions): 883 photos, 709 train / 174 test (SHA-256 `e0390abb...`). Until Experiment 0 this repository held a different copy (706 / 177, SHA-256 `8812e37b...`; hairdata test 36 instead of 37). Same photos, same groups, same labels; only the `split` column differed (281 of 883 photos). The old copy is kept at `research/exp0/backup/`. Details: `research/exp0/split_reconciliation.md`.
 
 ## Leakage audit (perceptual hash, difference hash, <=10 of 256 bits)
 - Before the fix: 310 near-duplicate pairs; **95 crossed train/test**, all inside the extra dandruff set (62 of its 71 test photos had a twin in train).

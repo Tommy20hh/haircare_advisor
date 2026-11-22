@@ -1,0 +1,26 @@
+TASK: scalp | test images: 37 (only source: roboflow_hairdata) | ensemble size: 5 | temperature: 1.00
+Decision thresholds (tuned on out-of-fold data): {'dryness': 0.42, 'dandruff': 0.86, 'low_density': 0.72}; inconclusive band +-0.1
+
+[dryness]  tested on 37 images (10 positive)
+  precision 0.5  recall 0.5  F1 0.5 (95% CI [0.174, 0.75])  specificity 0.815
+  AUROC 0.8 (95% CI [0.625, 0.931])  average precision 0.684
+  accuracy 0.73 vs always-majority baseline 0.73
+  calibration error (ECE): 0.17 before -> 0.17 after calibration
+  says 'inconclusive' on 14% of photos; accuracy on the rest: 0.75
+  style-free check (AUROC inside one photo source): roboflow_hairdata 0.8 (95% CI [0.625, 0.931], n=37, 10 pos)
+
+[dandruff]  tested on 37 images (16 positive)
+  precision 0.909  recall 0.625  F1 0.741 (95% CI [0.5, 0.897])  specificity 0.952
+  AUROC 0.878 (95% CI [0.753, 0.968])  average precision 0.853
+  accuracy 0.811 vs always-majority baseline 0.568
+  calibration error (ECE): 0.129 before -> 0.129 after calibration
+  says 'inconclusive' on 14% of photos; accuracy on the rest: 0.781
+  style-free check (AUROC inside one photo source): roboflow_hairdata 0.878 (95% CI [0.753, 0.968], n=37, 16 pos)
+
+[low_density]  tested on 37 images (15 positive)
+  precision 0.75  recall 0.4  F1 0.522 (95% CI [0.235, 0.743])  specificity 0.909
+  AUROC 0.821 (95% CI [0.664, 0.94])  average precision 0.774
+  accuracy 0.703 vs always-majority baseline 0.595
+  calibration error (ECE): 0.224 before -> 0.224 after calibration
+  says 'inconclusive' on 11% of photos; accuracy on the rest: 0.697
+  style-free check (AUROC inside one photo source): roboflow_hairdata 0.821 (95% CI [0.664, 0.94], n=37, 15 pos)

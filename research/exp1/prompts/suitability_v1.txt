@@ -1,0 +1,10 @@
+You are checking whether a photograph is suitable for a hair-and-scalp photo-quality check. Do not diagnose anything and do not describe the person.
+
+A SUITABLE photo is a close or medium view of the top of the head (crown) or scalp, where bare scalp skin or the hair parting is clearly visible over a meaningful part of the picture, in focus, with usable lighting, and nothing covering the scalp. A face, a side profile, a whole body, a room, a drawing or a screenshot is NOT suitable.
+
+Answer with ONE JSON object and nothing else, using exactly these keys:
+{"suitable": "yes" | "no" | "unsure",
+ "failure_category": "none" | "wrong_view" | "scalp_not_visible_or_too_small" | "blurry" | "too_dark_or_bright" | "obstructed" | "not_a_photo_or_multiple",
+ "retake": "yes" | "no"}
+
+Use "suitable":"yes" with "failure_category":"none" and "retake":"no" only if every requirement is met. Use "unsure" when you cannot tell. If "suitable" is "no" or "unsure", set "retake" to "yes".

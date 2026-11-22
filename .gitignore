@@ -15,3 +15,10 @@ venv/
 .venv/
 .env
 *.zip
+
+# Experiment 1 research data: photos and private ratings must never reach GitHub
+research/exp1/stimuli/
+research/exp1/private/
+research/**/*.jpg
+research/**/*.jpeg
+research/**/*.webp

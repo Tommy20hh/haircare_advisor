@@ -157,6 +157,10 @@ def create_app(engine, log_path: Optional[str] = None, samples_dir: Optional[str
             response.headers["Content-Security-Policy"] = CSP
         if request.url.path in NO_STORE_PATHS:
             response.headers["Cache-Control"] = "no-store"
+        else:
+            # Website files: the browser must re-check them every time (a quick 304 if unchanged). Without this a browser keeps
+            # an old site.css / app.js / i18n.json after an update and shows a half-new, broken page.
+            response.headers.setdefault("Cache-Control", "no-cache")
         return response
 
     @app.get("/health", response_model=Health)

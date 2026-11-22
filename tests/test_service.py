@@ -92,6 +92,10 @@ def main():
 
     # website is served
     assert c.get("/").status_code in (200, 404)  # 200 once web/index.html exists
+    css = c.get("/css/site.css")
+    if css.status_code == 200:   # website files must be re-checked by the browser, or an update shows as a half-old page
+        assert css.headers["cache-control"] == "no-cache", css.headers.get("cache-control")
+    assert c.get("/health").json()["status"] in ("ok", "degraded")
     print("service tests passed")
 
 

@@ -1,0 +1,10 @@
+TASK: balding | test images: 841 | ensemble size: 1 | temperature: 1.10
+Decision thresholds (tuned on out-of-fold data): {'balding': 0.43}; inconclusive band +-0.1
+
+[balding]  tested on 841 images (420 positive)
+  precision 0.961  recall 0.993  F1 0.977 (95% CI [0.967, 0.986])  specificity 0.96
+  AUROC 0.993 (95% CI [0.987, 0.998])  average precision 0.99
+  accuracy 0.976 vs always-majority baseline 0.501
+  calibration error (ECE): 0.02 before -> 0.016 after calibration
+  says 'inconclusive' on 1% of photos; accuracy on the rest: 0.982
+  style-free check (AUROC inside one photo source): kaggle_balding 0.993 (95% CI [0.987, 0.998], n=841, 420 pos)

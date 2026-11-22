@@ -1,0 +1,33 @@
+{
+  "task": "balding",
+  "checkpoint": "checkpoints\\balding_model.pt",
+  "bank_rows": 8253,
+  "labels_train_val_rows": 8253,
+  "test_rows": 841,
+  "n_train_field": 8253,
+  "thresholds": {
+    "exact": 0.9995,
+    "near": 0.98
+  },
+  "control": {
+    "train_photos": 8253,
+    "own_row_matched_exact": 8253,
+    "argmax_equals_own_row": 8253,
+    "min_own_similarity": 0.9998717308044434,
+    "bank_rows_unexplained_by_any_train_photo": 0
+  },
+  "test": {
+    "photos": 841,
+    "exact_matches": 0,
+    "near_matches": 0,
+    "max_similarity": 0.9733030796051025,
+    "median_similarity": 0.810247540473938,
+    "by_source": {
+      "kaggle_balding": {
+        "n": 841,
+        "exact": 0,
+        "near": 0
+      }
+    }
+  }
+}
